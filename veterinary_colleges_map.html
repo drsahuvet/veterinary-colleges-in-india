@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinary Colleges in India</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; font-family: Arial;">Veterinary Colleges in India</h1>
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([22.3511148, 78.6677428], 5); // Centered on India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Array of Veterinary Colleges with their coordinates and details
+        var colleges = [
+            { name: "NTR College of Veterinary Science, Gannavaram", lat: 16.517, lng: 80.802 },
+            { name: "College of Veterinary Science, Tirupati", lat: 13.628, lng: 79.419 },
+            { name: "College of Veterinary Science, Guwahati", lat: 26.144, lng: 91.736 },
+            { name: "Bihar Veterinary College, Patna", lat: 25.620, lng: 85.128 },
+            { name: "College of Veterinary Science, Durg", lat: 21.190, lng: 81.284 },
+            { name: "College of Veterinary Science, Anand", lat: 22.561, lng: 72.955 },
+            { name: "LUVAS, Hisar", lat: 29.151, lng: 75.721 },
+            { name: "Veterinary College, Palampur", lat: 32.110, lng: 76.536 },
+            { name: "SKUAST-J, Jammu", lat: 32.726, lng: 74.857 },
+            { name: "Ranchi Veterinary College, Ranchi", lat: 23.344, lng: 85.309 },
+            { name: "Veterinary College, Bangalore", lat: 12.971, lng: 77.594 },
+            { name: "College of Veterinary Science, Thrissur", lat: 10.527, lng: 76.214 },
+            { name: "College of Veterinary Science, Jabalpur", lat: 23.182, lng: 79.986 },
+            { name: "Bombay Veterinary College, Mumbai", lat: 19.076, lng: 72.877 },
+            { name: "College of Veterinary Science, Bhubaneswar", lat: 20.296, lng: 85.824 },
+            { name: "GADVASU, Ludhiana", lat: 30.900, lng: 75.857 },
+            { name: "College of Veterinary Science, Bikaner", lat: 28.022, lng: 73.311 },
+            { name: "Madras Veterinary College, Chennai", lat: 13.082, lng: 80.270 },
+            { name: "College of Veterinary Science, Hyderabad", lat: 17.385, lng: 78.486 },
+            { name: "College of Veterinary Science, Agartala", lat: 23.831, lng: 91.286 },
+            { name: "IVRI, Bareilly", lat: 28.367, lng: 79.430 },
+            { name: "Pantnagar Veterinary College", lat: 29.022, lng: 79.489 },
+            { name: "WBUAFS, Kolkata", lat: 22.572, lng: 88.363 }
+        ];
+
+        // Add markers for each college
+        colleges.forEach(function(college) {
+            var marker = L.marker([college.lat, college.lng]).addTo(map);
+            marker.bindPopup("<b>" + college.name + "</b>").openPopup();
+        });
+    </script>
+</body>
+</html>
